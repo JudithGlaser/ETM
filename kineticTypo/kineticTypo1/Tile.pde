@@ -12,8 +12,8 @@ class Tile {
  float fraqX; 
  float fraqY;
  
- float fraqW;
- float fraqH; 
+ int fraqW;
+ int fraqH; 
  
  Tile (){ 
    
@@ -28,16 +28,16 @@ class Tile {
  
  }
  
- Tile (int amountTX, int amountTY){ // constructor
+ Tile (int amountX, int amountY, int posX, int posY){ // constructor
  
-   tx = 0;
-   ty = 0;
- 
-   tilesX = amountTX; // how many tiles on the Y/X axis
-   tilesY = amountTY;
+   tilesX = amountX; // how many tiles on the Y/X axis
+   tilesY = amountY;
    
    tileW = width/tilesX;
    tileH = height/tilesY;
+   
+   tx = posX;
+   ty = posY;
  
  }
  
@@ -47,7 +47,8 @@ class Tile {
   //noStroke();
   //rect(tx,ty, tileW, tileH);
   //test();
-  fragment();
+  test2();
+  //fragment();
  }
  
  void fragment(){
@@ -99,4 +100,10 @@ class Tile {
     }
    } 
   } 
+  
+  void test2(){
+  
+  fill(random(0,255));
+  rect(tx,ty,tileW, tileH);
+ }
 }
