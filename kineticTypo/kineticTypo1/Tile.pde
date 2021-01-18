@@ -9,15 +9,14 @@ class Tile {
  float tileW; 
  float tileH;
 
- int fraqX; 
- int fraqY;
+ float fraqX; 
+ float fraqY;
  
- int fraqW;
- int fraqH; 
+ float fraqW;
+ float fraqH; 
  
- 
- Tile (){ // constructor
- 
+ Tile (){ 
+   
    tx = 0;
    ty = 0;
  
@@ -29,11 +28,26 @@ class Tile {
  
  }
  
+ Tile (int amountTX, int amountTY){ // constructor
+ 
+   tx = 0;
+   ty = 0;
+ 
+   tilesX = amountTX; // how many tiles on the Y/X axis
+   tilesY = amountTY;
+   
+   tileW = width/tilesX;
+   tileH = height/tilesY;
+ 
+ }
+ 
  void display(){
  
-  fill(255);
-  noStroke();
-  rect(tx,ty, tileW, tileH);
+  //fill(255);
+  //noStroke();
+  //rect(tx,ty, tileW, tileH);
+  //test();
+  fragment();
  }
  
  void fragment(){
@@ -65,12 +79,24 @@ class Tile {
       int dh = fraqH;
       
       copy(img, sx, sy, sw, sh, dx, dy, dw, dh);
-      
-     //fill(random(0,255));
-     //rect(fx * fraqW, fy * fraqH, fraqW, fraqH);
    }
   } 
- 
  }
  
+  void test(){
+  
+  fraqX = 4; // how many tiles on the Y/X axis  
+  fraqY = 4; 
+  
+  fraqW = int(tileW/fraqX);  // calcultaion of fraqments
+  fraqH = int(tileH/fraqY);  
+    
+  for (int fy = 0; fy < fraqY; fy++) { // wrap up 2D loop
+   for (int fx = 0; fx < fraqX; fx++) { 
+     
+     fill(random(0,255));
+     rect(fx * fraqW, fy * fraqH, fraqW, fraqH);
+    }
+   } 
+  } 
 }
