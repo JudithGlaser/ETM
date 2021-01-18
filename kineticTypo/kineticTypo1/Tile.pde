@@ -15,6 +15,9 @@ class Tile {
  int fraqW;
  int fraqH; 
  
+ int iy;
+ int ix;
+ 
  Tile (){ // Constructor
    
    tx = 0;
@@ -27,26 +30,14 @@ class Tile {
    tileH = height/tilesY;
  
  }
- 
-
- 
- void display(){
-     
-  for (int iy = 0; iy < tilesY; iy++) { // wrap up 2D loop
-   for (int ix = 0; ix < tilesX; ix++) {
-     
-  //test();
-  //fragment();
   
-  //Test Grid 1
-  fill(0,255,0);
-  rect(ix * tileW , iy * tileH ,tileW, tileH);
-  mau();
-  
-   }}
+ void display(){     
+  test();
+  //animation();
+  //rectangle();
  }
  
- void fragment(){
+ void animation(){
  
   fraqX = 4; // how many tiles on the Y/X axis  
   fraqY = 4; 
@@ -94,11 +85,13 @@ class Tile {
      rect(fx * fraqW, fy * fraqH, fraqW, fraqH);
     }
    } 
-  } 
+ } 
   
-   void mau(){
+
+void rectangle(){
   
   fill(255);
-  ellipse(tileW/2, tileH/2, 30, 30 );
-  } 
+  rect(0, 0, tileW, tileH);
+} 
+
 }
