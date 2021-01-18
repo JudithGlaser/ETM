@@ -1,0 +1,46 @@
+class Tile {
+
+ float tx;
+ float ty;
+  
+ int tilesX; 
+ int tilesY;
+ 
+ float tileW; 
+ float tileH;
+
+ float fraqX; 
+ float fraqY;
+ 
+ int fraqW;
+ int fraqH; 
+ 
+    float fraqX; 
+   float fraqY;
+ 
+   int fraqW;
+   int fraqH; 
+ 
+ 
+ Tile (int tempTX, int tempTY){ // constructor
+ 
+   tx = 50;
+   ty = 50;
+ 
+   tilesX = tempTX; // how many tiles on the Y/X axis
+   tilesY = tempTY;
+   
+   tileW = width/tilesX;
+   tileH = height/tilesY;
+ 
+ }
+ 
+ void display()
+ {
+ 
+  fill(255);
+  noStroke();
+  rect(tx,ty, tileW, tileH);
+  
+ }
+}

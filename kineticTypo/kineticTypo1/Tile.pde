@@ -47,28 +47,27 @@ class Tile {
   for (int fy = 0; fy < fraqY; fy++) { // wrap up 2D loop
    for (int fx = 0; fx < fraqX; fx++) {
       
-     fill(0);
-     rect(fx, fy, fraqW, fraqH);
+     
       // WAVE
-      //int wave = int(sin((frameCount + ( x*y )) * 0.05) * 200); // trigonomic function
-      //int wave = int(sin((frameCount + ( x*y )) * 0.05) * map(mouseY, 5, 499, 0, 200)); // trigonomic function
-      //println(mouseY);
+      int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 5, height, 0, 200)); // trigonomic function
       
       // SOURCE
-      //int sx = x * fraqW + wave; //copy the "right" dimensions of tile
-      // int sx = x * tileW + int(random(-100,100)); // source and destination are not the same (adding randomness)
-      //int sy = y * fraqH;
-      //int sw = fraqW;
-      //int sh = fraqH;
+      int sx = fx * fraqW + wave; //copy the "right" dimensions of tile
+      int sy = fy * fraqH;
+      int sw = fraqW;
+      int sh = fraqH;
 
 
       // DESTINATION
-      //int dx = x*fraqW; // source and destination are the same 
-      //int dy = y*fraqH;
-      //int dw = fraqW;
-      //int dh = fraqH;
+      int dx = fx*fraqW; // source and destination are the same 
+      int dy = fy*fraqH;
+      int dw = fraqW;
+      int dh = fraqH;
       
-      //copy(img, sx, sy, sw, sh, dx, dy, dw, dh);
+      copy(img, sx, sy, sw, sh, dx, dy, dw, dh);
+      
+     //fill(random(0,255));
+     //rect(fx * fraqW, fy * fraqH, fraqW, fraqH);
    }
   } 
  
