@@ -15,40 +15,35 @@ class Tile {
  int fraqW;
  int fraqH; 
  
- Tile (){ 
+ Tile (){ // Constructor
    
    tx = 0;
    ty = 0;
  
-   tilesX = 2; // how many tiles on the Y/X axis
-   tilesY = 1;
+   tilesX = 4; // how many tiles on the Y/X axis
+   tilesY = 2;
    
    tileW = width/tilesX;
    tileH = height/tilesY;
  
  }
  
- Tile (int amountX, int amountY, int posX, int posY){ // constructor
- 
-   tilesX = amountX; // how many tiles on the Y/X axis
-   tilesY = amountY;
-   
-   tileW = width/tilesX;
-   tileH = height/tilesY;
-   
-   tx = posX;
-   ty = posY;
- 
- }
+
  
  void display(){
- 
-  //fill(255);
-  //noStroke();
-  //rect(tx,ty, tileW, tileH);
+     
+  for (int iy = 0; iy < tilesY; iy++) { // wrap up 2D loop
+   for (int ix = 0; ix < tilesX; ix++) {
+     
   //test();
-  test2();
   //fragment();
+  
+  //Test Grid 1
+  fill(0,255,0);
+  rect(ix * tileW , iy * tileH ,tileW, tileH);
+  mau();
+  
+   }}
  }
  
  void fragment(){
@@ -101,9 +96,9 @@ class Tile {
    } 
   } 
   
-  void test2(){
+   void mau(){
   
-  fill(random(0,255));
-  rect(tx,ty,tileW, tileH);
- }
+  fill(255);
+  ellipse(tileW/2, tileH/2, 30, 30 );
+  } 
 }
