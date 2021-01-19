@@ -1,11 +1,5 @@
 class Tile {
 
- float tx;
- float ty;
-  
- int tilesX; 
- int tilesY;
- 
  float tileW; 
  float tileH;
 
@@ -15,32 +9,43 @@ class Tile {
  int fraqW;
  int fraqH; 
  
- int iy;
- int ix;
+ int i;
  
- Tile (){ // Constructor
+ float posX;
+ float posY;
+ 
+ PGraphics pg;
+ 
+ Tile (int x, int widthTile, int heightTile){ // Constructor
    
-   tx = 0;
-   ty = 0;
- 
-   tilesX = 4; // how many tiles on the Y/X axis
-   tilesY = 2;
+   tileW = widthTile;
+   tileH = heightTile;
    
-   tileW = width/tilesX;
-   tileH = height/tilesY;
- 
+   posX = x * widthTile;
+   posY = 0;
+   
+   pg = createGraphics(int(tileW), int(tileH));
+   
  }
   
- void display(){     
-  test();
-  //animation();
-  //rectangle();
+ void update(){   
+  pushMatrix(); // 
+  translate(posX,posY);
+  display();
+  image(pg, 0, 0);
+  popMatrix();
+ }
+ 
+ void display(){
+   pg.beginDraw();
+   animation();
+   pg.endDraw();
  }
  
  void animation(){
  
   fraqX = 4; // how many tiles on the Y/X axis  
-  fraqY = 4; 
+  fraqY = 8; 
   
   fraqW = int(tileW/fraqX);  // calcultaion of fraqments
   fraqH = int(tileH/fraqY);
@@ -50,22 +55,23 @@ class Tile {
       
      
       // WAVE
-      int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 5, height, 0, 200)); // trigonomic function
+      //int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * 200);
+      //int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 5, height, 0, 200)); // trigonomic function
       
       // SOURCE
-      int sx = fx * fraqW + wave; //copy the "right" dimensions of tile
+      int sx = fx * fraqW - 500; //copy the "right" dimensions of tile
       int sy = fy * fraqH;
       int sw = fraqW;
       int sh = fraqH;
 
 
       // DESTINATION
-      int dx = fx*fraqW; // source and destination are the same 
+      int dx = fx * fraqW; // source and destination are the same 
       int dy = fy*fraqH;
       int dw = fraqW;
       int dh = fraqH;
       
-      copy(img, sx, sy, sw, sh, dx, dy, dw, dh);
+      pg.copy(img, sx, sy, sw, sh, dx, dy, dw, dh);
    }
   } 
  }

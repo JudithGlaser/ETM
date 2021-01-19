@@ -1,42 +1,28 @@
-boolean overBox = false;
 PImage img;
 
-int tilesX; 
+int tilesX = 4; 
 int tilesY;
 
-float tileW; 
-float tileH;
-
-int y;
-int x;
-
-Tile t1;
-Tile t2;
+ArrayList<Tile> tiles = new ArrayList<Tile>();
 
 void setup() {
   size(1000,500, P2D); // make sure you define a renderer (P2D)
   img = loadImage("../ASSETS/ETM#2.png");
   img.resize(1000,500);
-  frameRate(10);
-  
-  t1 = new Tile();
-  t2 = new Tile();
- 
+  //frameRate(10);
+   
+  for (int x= 0; x < tilesX ; x++) {
+    Tile tile = new Tile(x, width/tilesX, height);
+    tiles.add(tile);
+  }
 }
 
 void draw() {
   background(0);
   
-  tilesX = 4; // how many tiles on the Y/X axis
-  tilesY = 2;
-  
-  tileW = width/tilesX;
-  tileH = height/tilesY;
-  
-  //image(img, 0, 0); //cheking if letter is displyed correct;
+  // The second is using an enhanced loop: (Kurzform um über alle Elemente der Liste zu gehen)
+  for (Tile tile : tiles) {
+  tile.update();
+}
 
-  translate(0, 0);
-  t1.display();
-  translate(tileW, 0);
-  t2.display();
 }
