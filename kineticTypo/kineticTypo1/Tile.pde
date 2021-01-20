@@ -23,9 +23,12 @@ class Tile {
   private float mx = 0;
   private float my = 0;
   
+  private PImage originalImage; 
   private PGraphics pg;
  
-  Tile (int x, int widthTile, int heightTile) {
+  Tile (PImage img, int x, int widthTile, int heightTile) {
+    this.originalImage = img;
+    
     this.offsetX = x;
    
     this.tileW = widthTile;
@@ -89,7 +92,7 @@ class Tile {
         int dw = this.fraqW;
         int dh = this.fraqH;
       
-        pg.copy(img, sx, sy, sw, sh, dx, dy, dw, dh);
+        pg.copy(this.originalImage, sx, sy, sw, sh, dx, dy, dw, dh);
       }
     }
     pg.endDraw();
