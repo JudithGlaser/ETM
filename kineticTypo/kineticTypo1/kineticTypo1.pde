@@ -16,6 +16,7 @@ void setup() {
 
 void draw() {
   background(0);
+  noStroke();
   // Kurzform um über alle Elemente der Liste zu gehen
   for (Tile tile : tiles) {
     // we are separating concerns here
