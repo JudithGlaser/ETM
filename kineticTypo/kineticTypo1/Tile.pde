@@ -15,8 +15,8 @@ class Tile {
   private int tileW; 
   private int tileH;
  
-  private int fraqW;
-  private int fraqH; 
+  private int fragW;
+  private int fragH; 
   
   private int posX;
   private int posY;
@@ -43,8 +43,8 @@ class Tile {
     this.pg = createGraphics(this.tileW, this.tileH);
    
     // calcultaion of fraqments
-    this.fraqW = int(this.tileW / Tile.fraqX);  
-    this.fraqH = int(this.tileH / Tile.fraqY);
+    this.fragW = int(this.tileW / Tile.fraqX);  
+    this.fragH = int(this.tileH / Tile.fraqY);
   }
   
   private boolean isHovered(){
@@ -84,16 +84,16 @@ class Tile {
         }
       
         // SOURCE
-        int sx = fx * this.fraqW + this.posX + wave; //copy the "right" dimensions of tile
-        int sy = fy * this.fraqH + this.posY;
-        int sw = this.fraqW;
-        int sh = this.fraqH;
+        int sx = fx * this.fragW + this.posX + wave; //copy the "right" dimensions of tile
+        int sy = fy * this.fragH + this.posY;
+        int sw = this.fragW;
+        int sh = this.fragH;
 
         // DESTINATION
-        int dx = fx * this.fraqW; // source and destination are the same 
-        int dy = fy * this.fraqH;
-        int dw = this.fraqW;
-        int dh = this.fraqH;
+        int dx = fx * this.fragW; // source and destination are the same 
+        int dy = fy * this.fragH;
+        int dw = this.fragW;
+        int dh = this.fragH;
       
         pg.copy(this.originalImage, sx, sy, sw, sh, dx, dy, dw, dh);
       }
