@@ -4,8 +4,8 @@ class Tile {
   // variable a final static variable, this means we know 
   // that this variable will never change
   private final static int fraqX = 4; 
-  private final static int fraqY = 6;
-  private final static int tolleranceX = 30;
+  private final static int fraqY = 8;
+  private final static int tolleranceX = 0;
  
   // declaring this variables as private makes sure we 
   // can only access this variables within the Tile class
@@ -20,6 +20,8 @@ class Tile {
   
   private int posX;
   private int posY;
+  
+  private int intensity;
     
   private float mx = 0;
   private float my = 0;
@@ -42,7 +44,7 @@ class Tile {
    
     this.pg = createGraphics(this.tileW, this.tileH);
    
-    // calcultaion of fraqments
+    // calcultaion of fragments
     this.fragW = int(this.tileW / Tile.fraqX);  
     this.fragH = int(this.tileH / Tile.fraqY);
     
@@ -71,19 +73,22 @@ class Tile {
     image(this.pg, 0, 0);
     popMatrix();
   }
+  
  
   void drawAnimation(){
+    
     pg.beginDraw();
     for (int fy = 0; fy < Tile.fraqY; fy++) { // wrap up 2D loop
       for (int fx = 0; fx < Tile.fraqX; fx++) {
         // WAVE
-        int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * 200);
+        int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * 150);
         // int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 5, height, 0, 200)); // trigonomic function
       
         if ( this.isHovered()) { 
-          wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 0, this.tileH, 10, 100)); 
+          wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, this.posY, this.posY + this.tileH, 10, 100)); 
           pg.fill(255, 0, 0);
           pg.rect(0 + fx, 0 + fy, 20, 20);
+          println(intensity);
         }
       
         // SOURCE

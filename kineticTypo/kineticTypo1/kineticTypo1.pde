@@ -2,15 +2,15 @@
 // code created by Markus Maerzhase https://github.com/maerzhase
 
 public final int tilesX = 4;
-public final int tilesY = 2;
+public final int tilesY = 6;
 
 private PImage originalImage;
 private ArrayList<Tile> tiles = new ArrayList<Tile>();
 
 void setup() {
-  size(1000, 500);
-  originalImage = loadImage("../ASSETS/ETM#2.png");
-  originalImage.resize(1000, 500);
+  size(568, 800);
+  originalImage = loadImage("../ASSETS/ETM_portrait#1.png");
+  originalImage.resize(568, 800);
   for (int x= 0; x < tilesX ; x++) {
     for (int y = 0; y < tilesY ; y++) {
     Tile tile = new Tile(originalImage, x, y, width/tilesX, height/tilesY);
