@@ -2,7 +2,7 @@
 // code created by Markus Maerzhase https://github.com/maerzhase
 
 public final int tilesX = 4;
-public final int tilesY = 0;
+public final int tilesY = 2;
 
 private PImage originalImage;
 private ArrayList<Tile> tiles = new ArrayList<Tile>();
@@ -12,8 +12,10 @@ void setup() {
   originalImage = loadImage("../ASSETS/ETM#2.png");
   originalImage.resize(1000, 500);
   for (int x= 0; x < tilesX ; x++) {
-    Tile tile = new Tile(originalImage, x, width/tilesX, height);
+    for (int y = 0; y < tilesY ; y++) {
+    Tile tile = new Tile(originalImage, x, y, width/tilesX, height/tilesY);
     tiles.add(tile);
+    }
   }
 }
 

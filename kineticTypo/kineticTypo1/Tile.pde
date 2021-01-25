@@ -10,6 +10,7 @@ class Tile {
   // declaring this variables as private makes sure we 
   // can only access this variables within the Tile class
   private int offsetX;
+  private int offsetY;
  
   private int tileW; 
   private int tileH;
@@ -26,16 +27,18 @@ class Tile {
   private PImage originalImage; 
   private PGraphics pg;
  
-  Tile (PImage img, int x, int widthTile, int heightTile) {
+  // constructor
+  Tile (PImage img, int x, int y, int widthTile, int heightTile) {
     this.originalImage = img;
     
     this.offsetX = x;
+    this.offsetY = y;
    
     this.tileW = widthTile;
     this.tileH = heightTile;
    
     this.posX = this.offsetX * this.tileW;
-    this.posY = 0;
+    this.posY = this.offsetY * this.tileH;
    
     this.pg = createGraphics(this.tileW, this.tileH);
    
@@ -82,7 +85,7 @@ class Tile {
       
         // SOURCE
         int sx = fx * this.fraqW + this.posX + wave; //copy the "right" dimensions of tile
-        int sy = fy * this.fraqH;
+        int sy = fy * this.fraqH + this.posY;
         int sw = this.fraqW;
         int sh = this.fraqH;
 
