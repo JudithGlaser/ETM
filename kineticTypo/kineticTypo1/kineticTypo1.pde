@@ -1,3 +1,6 @@
+// animation based on code of Tim Rodenbröker https://timrodenbroeker.de/
+// code created by Markus Maerzhase https://github.com/maerzhase
+
 public final int tilesX = 4;
 public final int tilesY = 0;
 
