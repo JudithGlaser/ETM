@@ -20,7 +20,7 @@ class Tile {
   
   private int posX;
   private int posY;
-  
+    
   private float mx = 0;
   private float my = 0;
   
@@ -45,13 +45,14 @@ class Tile {
     // calcultaion of fraqments
     this.fragW = int(this.tileW / Tile.fraqX);  
     this.fragH = int(this.tileH / Tile.fraqY);
+    
   }
   
   private boolean isHovered(){
     if (this.mx > this.posX - Tile.tolleranceX && 
       this.mx < this.posX + this.tileW + Tile.tolleranceX && 
-      this.my > 0 && 
-      this.my < height) {
+      this.my > this.posY - Tile.tolleranceX && 
+      this.my < this.posY + this.tileH + Tile.tolleranceX) {
         return true; 
     } else {
       return false;
@@ -64,7 +65,7 @@ class Tile {
   }
  
   void display(){
-    pushMatrix(); // 
+    pushMatrix(); //keeps coordinate system for each tile at 0,0 
     translate(this.posX,this.posY);
     this.drawAnimation();
     image(this.pg, 0, 0);
@@ -80,7 +81,9 @@ class Tile {
         // int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 5, height, 0, 200)); // trigonomic function
       
         if ( this.isHovered()) { 
-          wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 5, 499, 0, 200)); 
+          wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 0, this.tileH, 10, 100)); 
+          pg.fill(255, 0, 0);
+          pg.rect(0 + fx, 0 + fy, 20, 20);
         }
       
         // SOURCE
