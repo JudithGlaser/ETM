@@ -88,7 +88,6 @@ class Tile {
           wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, this.posY, this.posY + this.tileH, 10, 100)); 
           pg.fill(255, 0, 0);
           pg.rect(0 + fx, 0 + fy, 20, 20);
-          println(intensity);
         }
       
         // SOURCE
