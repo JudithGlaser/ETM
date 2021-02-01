@@ -3,8 +3,8 @@ class Tile {
   // Since we configure this at the beginning we can make this
   // variable a final static variable, this means we know 
   // that this variable will never change
-  private final static int fraqX = 4; 
-  private final static int fraqY = 8;
+  private final static int fraqX = 5; 
+  private final static int fraqY = 15;
   private final static int tolleranceX = 0;
  
   // declaring this variables as private makes sure we 
@@ -20,14 +20,13 @@ class Tile {
   
   private int posX;
   private int posY;
-  
-  private int intensity;
-    
+
   private float mx = 0;
   private float my = 0;
   
   private PImage originalImage; 
   private PGraphics pg;
+  
  
   // constructor
   Tile (PImage img, int x, int y, int widthTile, int heightTile) {
@@ -44,9 +43,11 @@ class Tile {
    
     this.pg = createGraphics(this.tileW, this.tileH);
    
+    
     // calcultaion of fragments
     this.fragW = int(this.tileW / Tile.fraqX);  
     this.fragH = int(this.tileH / Tile.fraqY);
+    //this.fragH = 11;
     
   }
   
@@ -70,8 +71,18 @@ class Tile {
     pushMatrix(); //keeps coordinate system for each tile at 0,0 
     translate(this.posX,this.posY);
     this.drawAnimation();
+    if (this.isHovered()) { 
+     pg.beginDraw();
+     pg.fill(255, 0, 0);
+     pg.rect(0,0,20,20);
+     pg.endDraw();
+   
+     }
     image(this.pg, 0, 0);
     popMatrix();
+    //println("fragH " + this.fragH);
+    //println("tileH " + this.tileH);
+    //println("fragY "+ Tile.fraqY);
   }
   
  
@@ -81,17 +92,16 @@ class Tile {
     for (int fy = 0; fy < Tile.fraqY; fy++) { // wrap up 2D loop
       for (int fx = 0; fx < Tile.fraqX; fx++) {
         // WAVE
-        int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * 150);
-        // int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 5, height, 0, 200)); // trigonomic function
+        //int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * 100);
+        //int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 5, height, 0, 200)); // trigonomic function
       
         if ( this.isHovered()) { 
-          wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, this.posY, this.posY + this.tileH, 10, 100)); 
-          pg.fill(255, 0, 0);
-          pg.rect(0 + fx, 0 + fy, 20, 20);
+          //wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseX, this.posX, this.posX + this.tileH, 20, 100)); 
         }
       
         // SOURCE
-        int sx = fx * this.fragW + this.posX + wave; //copy the "right" dimensions of tile
+        int sx = fx * this.fragW + this.posX;  //copy the "right" dimensions of tile
+        //int sx = fx * this.fragW + this.posX + wave;  //copy the "right" dimensions of tile
         int sy = fy * this.fragH + this.posY;
         int sw = this.fragW;
         int sh = this.fragH;

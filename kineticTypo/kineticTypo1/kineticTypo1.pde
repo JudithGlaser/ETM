@@ -1,8 +1,8 @@
 // animation based on code of Tim Rodenbröker https://timrodenbroeker.de/
 // code created by Markus Maerzhase https://github.com/maerzhase
 
-public final int tilesX = 4;
-public final int tilesY = 6;
+public final int tilesX = 1;
+public final int tilesY = 5;
 
 private PImage originalImage;
 private ArrayList<Tile> tiles = new ArrayList<Tile>();
@@ -20,7 +20,7 @@ void setup() {
 }
 
 void draw() {
-  background(0);
+  background(255,0,0);
   noStroke();
   // Kurzform um über alle Elemente der Liste zu gehen
   for (Tile tile : tiles) {
@@ -30,7 +30,7 @@ void draw() {
     // we do that before we actually display the tile
     tile.update(mouseX, mouseY);
     // display really just has the task of drawing the tile based on the
-    // parameters we provide to the thile via the update function
+    // parameters we provide to the tile via the update function
     tile.display();
   }
 }
