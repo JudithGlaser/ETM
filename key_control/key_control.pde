@@ -32,18 +32,30 @@ void draw() {
     p1.display();
     t1.display();
 
-/////
+// this will be replaced by poti values  
   if (upPressed) {
     circleY--;
+    if (circleY < p1.r){
+      circleY = p1.r;
+    }
   }
   if (downPressed) {
     circleY++;
+     if (circleY > height - p1.r){
+      circleY = height - p1.r;
+    }
   }
   if (leftPressed) {
     circleX--;
+    if (circleX < p1.r){
+      circleX = p1.r;
+    }
   }
   if (rightPressed) {
     circleX++;
+     if (circleX > width - p1.r){
+      circleX = width - p1.r;
+    }
   }
 }
 

@@ -12,7 +12,7 @@ class Particle {
   
   boolean overlaps(Tile other){
   
-  float d = dist(x, y, other.x, other.y);
+  float d = dist(x, y, other.rx, other.ry);
   if (d < r + other.r){
    return true;
   } else {
