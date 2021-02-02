@@ -10,6 +10,9 @@ class Tile {
   private int posX;
   private int posY;
   
+  float alpha;
+  //int o, g;
+  
   Tile (int x, int y, int tempW, int tempH) {
     
     tileW = tempW;
@@ -49,12 +52,25 @@ class Tile {
   }
   
   void drawEffect(){
-  
-    println(p1.x); 
-    float alpha = int(map(p1.x, p1.r, width - p1.r, 25, 100));
+      
+   
+    if (p1.x > this.posX && p1.x < this.posX + this.tileW/2) {
+        alpha = int(map(p1.x, this.posX, this.posX + this.tileW/2, 25, 100));
+         //o = 255;
+         //g = 0;
+     } 
+     if (p1.x > this.posX + this.tileW/2 && p1.x < this.posX + this.tileW) {
+     alpha = int(map(p1.x, this.posX + this.tileW/2, this.posX + this.tileW, 100, 25));
+        //o = 0;
+        //g = 255;
+    } 
+    println("p1.x " + p1.x); 
+    println("posX " + posX); 
+    println("posX + tileW/2 " + (this.posX + this.tileW/2)); 
     if (this.overlaps(p1)){
       ellipseMode(CENTER);
       noStroke();
+      //fill(o, g, 0, 55);
       fill(255, 0, 0, int(alpha));
       ellipse(rx, ry, tileW, tileH);
     }

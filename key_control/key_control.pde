@@ -24,10 +24,6 @@ void setup() {
       tiles.add(tile);
     }
   }
-  //t1 = new Tile(0, 0, width/2, height/2);
-  //t2 = new Tile(0, height/2, width/2, height/2);
-  //t3 = new Tile(width/2, 0 , width/2, height/2);
-  //t4 = new Tile(width/2, height/2, width/2, height/2);
 }
 
 void draw() {
@@ -41,10 +37,6 @@ void draw() {
    for (Tile tile : tiles) {
     tile.display();
    }
-    //t1.display();
-    //t2.display();
-    //t3.display();
-    //t4.display();
    
     
 

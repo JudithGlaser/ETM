@@ -11,8 +11,11 @@ class Particle {
   }
   
   void display(){
+  ellipseMode(CENTER);
   stroke(0);
   noFill();
   ellipse(x, y, r*2, r*2);
+  fill(0);
+  ellipse(x, y, 2, 2);
   }
 }
