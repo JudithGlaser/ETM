@@ -9,28 +9,31 @@ float circleX = 300;
 float circleY = 300;
 
 Particle p1;
-Tile t1; 
+Tile t1, t2, t3, t4; 
 
 
 void setup() {
   size (500, 500);
   p1 = new Particle(circleX, circleY, 50);
   t1 = new Tile(0, 0, width/2, height/2);
+  t2 = new Tile(0, height/2, width/2, height/2);
+  t3 = new Tile(width/2, 0 , width/2, height/2);
+  t4 = new Tile(width/2, height/2, width/2, height/2);
 }
 
 void draw() {
   background(255);  
-
+    
     p1.x = circleX; 
     p1.y = circleY; 
-
-
-    if (p1.overlaps(t1)){
-      background(255, 0, 0);
-    }
-
+    
     p1.display();
     t1.display();
+    t2.display();
+    t3.display();
+    t4.display();
+   
+    
 
 // this will be replaced by poti values  
   if (upPressed) {

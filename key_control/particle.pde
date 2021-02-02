@@ -10,15 +10,15 @@ class Particle {
     r = tempR;
   }
   
-  boolean overlaps(Tile other){
+  //boolean overlaps(Tile other){
   
-  float d = dist(x, y, other.rx, other.ry);
-  if (d < r + other.r){
-   return true;
-  } else {
-    return false;
-  }
-  }
+  //float d = dist(x, y, other.rx, other.ry);
+  //if (d < r + other.r){
+   //return true;
+  //} else {
+    //return false;
+  //}
+  //}
   
   void display(){
   stroke(0);

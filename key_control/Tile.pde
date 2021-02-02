@@ -13,7 +13,17 @@ class Tile {
     
     rx = tempX + tempW/2;
     ry = tempY + tempH/2;
-    r = tempW/2;
+    r = dist(x, y, rx, ry);
+  }
+  
+  boolean overlaps(Particle other){
+  
+  float d = dist(rx, ry, other.x, other.y);
+  if (d < r + other.r){
+   return true;
+  } else {
+    return false;
+  }
   }
  
  
@@ -21,9 +31,20 @@ class Tile {
   stroke(0);
   noFill();
   rect(x, y, tileW, tileH);
+  this.drawEffect();
   ellipseMode(CENTER);
-  noStroke(); 
-  fill(200);
-  ellipse(rx, ry, tileW, tileH);
+  noStroke();
+  fill(0, 0, 0, 40);
+  ellipse(rx, ry, r*2, r*2);
+  }
+  
+  void drawEffect(){
+  
+    if (this.overlaps(p1)){
+      ellipseMode(CENTER);
+      noStroke();
+      fill(255, 0, 0, 50);
+      ellipse(rx, ry, tileW, tileH);
+    }
   }
 }
