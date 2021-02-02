@@ -1,24 +1,14 @@
 class Particle {
 
-  float x, y; 
-  float r;
+  int x, y; 
+  int r;
   
-  Particle (float tempX, float tempY, float tempR) {
+  Particle (int tempX, int tempY, int tempR) {
     
     x = tempX;
     y = tempY;
     r = tempR;
   }
-  
-  //boolean overlaps(Tile other){
-  
-  //float d = dist(x, y, other.rx, other.ry);
-  //if (d < r + other.r){
-   //return true;
-  //} else {
-    //return false;
-  //}
-  //}
   
   void display(){
   stroke(0);

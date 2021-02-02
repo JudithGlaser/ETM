@@ -1,19 +1,29 @@
 class Tile {
 
-  float x, y; 
-  float tileW, tileH;
+  int x, y; 
+  int tileW, tileH;
   float r, rx, ry;
   
-  Tile (float tempX, float tempY, float tempW, float tempH) {
+  private int offsetX;
+  private int offsetY;
+  
+  private int posX;
+  private int posY;
+  
+  Tile (int x, int y, int tempW, int tempH) {
     
-    x = tempX;
-    y = tempY;
     tileW = tempW;
     tileH = tempH;
     
-    rx = tempX + tempW/2;
-    ry = tempY + tempH/2;
-    r = dist(x, y, rx, ry);
+    this.offsetX = x;
+    this.offsetY = y;
+    
+    this.posX = this.offsetX * this.tileW;
+    this.posY = this.offsetY * this.tileH;
+    
+    rx = this.posX + tempW/2;
+    ry = this.posY + tempH/2;
+    r = dist(this.posX, this.posY, rx, ry);
   }
   
   boolean overlaps(Particle other){
@@ -30,7 +40,7 @@ class Tile {
   void display(){
   stroke(0);
   noFill();
-  rect(x, y, tileW, tileH);
+  rect(this.posX, this.posY, tileW, tileH);
   this.drawEffect();
   ellipseMode(CENTER);
   noStroke();
@@ -40,10 +50,12 @@ class Tile {
   
   void drawEffect(){
   
+    println(p1.x); 
+    float alpha = int(map(p1.x, p1.r, width - p1.r, 25, 100));
     if (this.overlaps(p1)){
       ellipseMode(CENTER);
       noStroke();
-      fill(255, 0, 0, 50);
+      fill(255, 0, 0, int(alpha));
       ellipse(rx, ry, tileW, tileH);
     }
   }
