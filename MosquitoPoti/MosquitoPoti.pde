@@ -7,12 +7,15 @@ int PIN_A = 18; // AUF PI 18;
 int PIN_B = 23; // AUF PI 24;
 
 Avarage aX;
+Avarage aY;
 
 void setup() {
   client = new MQTTClient(this);
   client.connect("mqtt://localhost", "processing");
   client.subscribe("a0");
+  client.subscribe("a1");
   aX = new Avarage();
+  aY = new Avarage();
 
 }
 
@@ -41,16 +44,21 @@ int analogRead() {
 }
 void draw() {
   aX.update(a0);
+  aY.update(a1);
   // int value = analogRead();
-  float value = aX.value();
-  println(value);
-  background(map(value, 200, 2000, 0, 255));
+  float x = aX.value();
+  float y = aY.value();
+  //println(a1);
+  background(map(y, 200, 2000, 0, 255));
 }
 
 void messageReceived(String topic, byte[] payload)  {
-  if(topic == "a0") {
+  // println(topic);
+  if(topic.equals("a0")) {
+      //println("receiving a0");
       a0 = Integer.parseInt(new String(payload));
-  } else if(topic == "a1"){
+  } else if(topic.equals("a1")){
+    println("receiving a1");
     a1 = Integer.parseInt(new String(payload));
   }
 }
