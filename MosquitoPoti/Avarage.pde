@@ -4,8 +4,8 @@ class Avarage {
   private float[] storedValues;
   private int count = 0;
   
-  void Avarage() {
-   this.storedValues = new float[10];
+  Avarage() {
+   this.storedValues = new float[100];
   }
   
   void update(float value) {
