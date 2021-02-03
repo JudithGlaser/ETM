@@ -22,18 +22,18 @@ b_pin2 = 5
 
 # create discharge function for reading capacitor data
 def discharge1():
-    GPIO.setup(a_pin, GPIO.IN)
-    GPIO.setup(b_pin, GPIO.OUT)
-    GPIO.output(b_pin, False)
+    GPIO.setup(a_pin1, GPIO.IN)
+    GPIO.setup(b_pin1, GPIO.OUT)
+    GPIO.output(b_pin1, False)
     time.sleep(0.005)
 
 # create time function for capturing analog count value
 def charge_time1():
-    GPIO.setup(b_pin, GPIO.IN)
-    GPIO.setup(a_pin, GPIO.OUT)
+    GPIO.setup(b_pin1, GPIO.IN)
+    GPIO.setup(a_pin1, GPIO.OUT)
     count = 0
-    GPIO.output(a_pin, True)
-    while not GPIO.input(b_pin):
+    GPIO.output(a_pin1, True)
+    while not GPIO.input(b_pin1):
         count = count +1
     return count
 
