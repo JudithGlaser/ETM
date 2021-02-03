@@ -1,7 +1,7 @@
 import processing.io.*;
 import mqtt.*;
 MQTTClient client;
-int a0;
+int a0, a1;
 
 int PIN_A = 18; // AUF PI 18;
 int PIN_B = 23; // AUF PI 24;
@@ -42,11 +42,15 @@ int analogRead() {
 void draw() {
   aX.update(a0);
   // int value = analogRead();
-  
-  // println(a0);
-  background(map(aX.value(), 200, 2000, 0, 255));
+  float value = aX.value();
+  println(value);
+  background(map(value, 200, 2000, 0, 255));
 }
 
 void messageReceived(String topic, byte[] payload)  {
-  a0 = Integer.parseInt(new String(payload));
+  if(topic == "a0") {
+      a0 = Integer.parseInt(new String(payload));
+  } else if(topic == "a1"){
+    a1 = Integer.parseInt(new String(payload));
+  }
 }
