@@ -5,7 +5,7 @@ class Avarage {
   private int count = 0;
   
   void Avarage() {
-   storedValues = new float[10];
+   this.storedValues = new float[10];
   }
   
   void update(float value) {
