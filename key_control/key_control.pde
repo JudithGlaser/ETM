@@ -47,11 +47,11 @@ void draw() {
   aX.update(a0);
   aY.update(a1);
     
-    p1.x = circleX; 
-    p1.y = circleY; 
+    p1.x = int(map(aX.value(), 100, 1500, 0, width)); 
+    p1.y = int(map(aY.value(), 100, 1500, 0, height));
     
-  float x = aX.value();
-  float y = aY.value();
+  //float x = map(aX.value(), 100, 1500, 0, width);
+  //float y = map(aY.value(), 100, 1500, 0, height);
     
     p1.display();
    
@@ -84,10 +84,6 @@ void draw() {
       circleX = width - p1.r;
     }
   }
-}
-
-void messageReceived(String topic, byte[] payload)  {
-  a0 = Integer.parseInt(new String(payload));
 }
 
 void keyPressed() {
