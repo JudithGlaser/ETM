@@ -17,8 +17,8 @@ GPIO.setmode(GPIO.BCM)
 a_pin1 = 18
 b_pin1 = 23
 
-a_pin2 = 18
-b_pin2 = 23
+a_pin2 = 16
+b_pin2 = 21
 
 # create discharge function for reading capacitor data
 def discharge1():
