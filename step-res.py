@@ -68,6 +68,9 @@ def analog_read2():
 while True:
     value1 = analog_read1()
     value2 = analog_read2()
-    publish.single("a0", value1, hostname="localhost")
-    publish.single("a1", value2, hostname="localhost")
+    # publish.single("a0", value1, hostname="localhost")
+    # publish.single("a1", value2, hostname="localhost")
+    msgs = [{'topic':"poti/multiple1", 'payload':"multiple 1"},
+    ("poti/multiple2", "multiple 2", 0, False)]
+    publish.multiple(msgs, hostname="localhost")
     time.sleep(0.016)
