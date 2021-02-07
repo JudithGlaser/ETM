@@ -18,15 +18,18 @@ varying vec4 vertTexCoord;
 varying vec4 vertColor;
 
 void main(void) {
-  vec2 frag = gl_FragCoord.xy / resolution.xy;
-  frag.x *= 1.0;
-  frag.y *= 1.0;
-  frag = fract(frag);
+  vec2 st = gl_FragCoord.xy / resolution.xy;
+  st *= (90.0 * mouse.y);
+	// st.x += step(0.5, mod(st.x,.000)) * 0.500;
+  st = fract(st);
 
-  float w = sin((time + (frag.x * frag.y)) * 0.1) / 6;
+
+  float y = smoothstep(0.0, 1.0, st.y) * mouse.x;
+  // float y = step(0.5, st.y);
+  float w = sin(((time * 0.5)  + (y)) * 0.1) / 6;
+
 
   vec2 vertexPos = vertTexCoord.st;
-
   vertexPos.x += w;
 
   gl_FragColor = texture2D(texture, vertexPos);

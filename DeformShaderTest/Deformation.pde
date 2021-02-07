@@ -1,4 +1,5 @@
 class Deformation {
+ private final static int tolerance = 30;
  PGraphics pg;
  PImage tex;
  PShader deform;
@@ -23,7 +24,12 @@ class Deformation {
   
   void update() {
     this.deform.set("time", float(frameCount));
-    this.deform.set("mouse", float(mouseX), float(mouseY));
+    float x = 100;
+    if (this.isHovered()) {
+       // mult = 0.1; 
+       x -= this.distX() * 100;
+    }
+    this.deform.set("mouse", x, this.distY());
   }
   
   void display() {
@@ -39,5 +45,25 @@ class Deformation {
     rect(0,0,this.sizeX,sizeY);
     popMatrix();    
   }
+  
+  private float distX() {
+    return sin(map(mouseX, this.posX, this.posX + this.sizeX, 0, PI));
+  }
+  
+  private float distY() {
+    return sin(map(mouseY, this.posY, this.posY + this.sizeY, 0, PI));
+  }
+  
+  private boolean isHovered(){
+    if (mouseX > this.posX - Deformation.tolerance && 
+      mouseX < this.posX + this.sizeX + Deformation.tolerance && 
+      mouseY > 0 && 
+      mouseY < height) {
+        return true; 
+    } else {
+      return false;
+    }
+  }
+  
    
 }
