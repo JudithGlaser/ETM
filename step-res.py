@@ -70,4 +70,5 @@ while True:
     value2 = analog_read2()
     publish.single("a0", value1, hostname="localhost")
     publish.single("a1", value2, hostname="localhost")
+    print(value1, value2)
     time.sleep(0.016)
