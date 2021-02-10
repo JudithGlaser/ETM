@@ -6,7 +6,7 @@ class Deformation {
  int posX, posY;
  int sizeX, sizeY;
 
-  Deformation(PImage t, int i, int x, int y, int w, int h) {
+  Deformation(PImage t, int i, int j, int x, int y, int w, int h) {
     this.posX = x;
     this.posY = y;
     this.sizeX = w;
@@ -16,20 +16,20 @@ class Deformation {
     this.pg = createGraphics(this.sizeX, this.sizeY, P2D);
     this.deform.set("resolution", float(width), float(height));
     float offsetX = i * 2;
-    println(offsetX / 2);
-    this.deform.set("offset", offsetX, 0f, 0f, 0f);
-
-
-}
+    float offsetY = j * -2;
+    this.deform.set("offset", offsetX, offsetY, 0f, 0f);
+  }
   
   void update() {
     this.deform.set("time", float(frameCount));
     float x = 100;
+    float y = 1;
     if (this.isHovered()) {
        // mult = 0.1; 
        x -= this.distX() * 100;
+       y = this.distY();
     }
-    this.deform.set("mouse", x, this.distY());
+    this.deform.set("mouse", x, y);
   }
   
   void display() {
@@ -40,9 +40,9 @@ class Deformation {
     pushMatrix();
     translate(this.posX, this.posY);
     image(this.pg, 0, 0, this.sizeX, this.sizeY);
-    stroke(0);
+    stroke(50);
     noFill();
-    rect(0,0,this.sizeX,sizeY);
+    rect(0, 0, this.sizeX, sizeY);
     popMatrix();    
   }
   
@@ -57,8 +57,8 @@ class Deformation {
   private boolean isHovered(){
     if (mouseX > this.posX - Deformation.tolerance && 
       mouseX < this.posX + this.sizeX + Deformation.tolerance && 
-      mouseY > 0 && 
-      mouseY < height) {
+      mouseY > this.posY - Deformation.tolerance && 
+      mouseY < this.posY + this.sizeY + Deformation.tolerance) {
         return true; 
     } else {
       return false;

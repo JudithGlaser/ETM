@@ -19,14 +19,19 @@ varying vec4 vertColor;
 
 void main(void) {
   vec2 st = gl_FragCoord.xy / resolution.xy;
-  st *= (90.0 * mouse.y);
+  st *= 4;
 	// st.x += step(0.5, mod(st.x,.000)) * 0.500;
   st = fract(st);
 
 
-  float y = smoothstep(0.0, 1.0, st.y) * mouse.x;
-  // float y = step(0.5, st.y);
-  float w = sin(((time * 0.5)  + (y)) * 0.1) / 6;
+  float t = time;
+  float y = smoothstep(0.0, 1.0, st.y);
+  float x = smoothstep(0.0, 1.0, st.x);
+  // y = step(0.5, st.y);
+  // x = step(0.5, st.x);
+  x *= mouse.x / 10000;
+  t *= 0.1 + mouse.y;
+  float w = sin((t + y) * x) / 6;
 
 
   vec2 vertexPos = vertTexCoord.st;

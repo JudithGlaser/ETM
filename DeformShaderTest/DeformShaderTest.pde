@@ -10,7 +10,8 @@
 
 PImage tex;
 PShader deform;
-int tilesX = 4;
+int tilesX = 20;
+int tilesY = 10;
 
 private ArrayList<Deformation> deformations = new ArrayList<Deformation>();
 
@@ -22,8 +23,10 @@ void setup() {
   tex.resize(width, height);
   
   for (int x= 0; x < tilesX ; x++) {
-    Deformation def = new Deformation(tex, x, (width / tilesX) * x, 0, width / tilesX, height);
-    deformations.add(def);
+    for (int y= 0; y < tilesY ; y++) {
+      Deformation def = new Deformation(tex, x, y,(width / tilesX) * x, (height/tilesY) * y, width / tilesX, height / tilesY);
+      deformations.add(def);
+    }
   }
 
 }
