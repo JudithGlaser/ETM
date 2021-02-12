@@ -1,14 +1,17 @@
 class Avarage {
-  private float avarage = 0;
   private float sum = 0;
   private float[] storedValues;
   private int count = 0;
+  public float min = MAX_FLOAT;
+  public float max = 0;
   
   Avarage() {
    this.storedValues = new float[100];
   }
   
   void update(float value) {
+    if (value > max) max = value;
+    if (value < min) min = value;
     if(this.count < this.storedValues.length) {
       this.storedValues[count++] = value;
       this.sum += value;
@@ -25,5 +28,5 @@ class Avarage {
   float value() {
     return this.sum / this.count;
   }
-  
+    
 }

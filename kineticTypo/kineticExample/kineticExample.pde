@@ -7,6 +7,7 @@ PImage img;
 void setup() {
   font = createFont("../ASSETS/RobotoMono-Regular.ttf", 400);
   size(1000, 500, P2D); // make sure you define a renderer (P2D)
+  frameRate(30);
   //pg = createGraphics(700, 500, P2D);
   img = loadImage("../ASSETS/ETM#2.png");
   img.resize(1000,500);
@@ -31,7 +32,7 @@ void draw() {
   //image(img, 0, 0); //cheking if letter is displyed correct
   
   int tilesX = 10; // how many tiles on the Y/X axisy 
-  float tilesY = map(mouseX, 5, 499, 0, 40);
+  float tilesY = 10; // map(100, 5, 499, 0, 40);
 
   int tileW = int(width/tilesX);  // calcultaion of tiles hight and width
   int tileH = int(height/tilesY);
@@ -41,7 +42,7 @@ void draw() {
       
       // WAVE
       //int wave = int(sin((frameCount + ( x*y )) * 0.05) * 200); // trigonomic function
-      int wave = int(sin((frameCount + ( x*y )) * 0.05) * map(mouseY, 5, 499, 0, 200)); // trigonomic function
+      int wave = int(sin((frameCount + ( x*y )) * 0.05) * width/4); // trigonomic function
       println(mouseY);
       
       // SOURCE
@@ -57,8 +58,10 @@ void draw() {
       int dy = y*tileH;
       int dw = tileW;
       int dh = tileH;
-      
+      noFill();
+      stroke(120);
       copy(img, sx, sy, sw, sh, dx, dy, dw, dh);
-    }
+      rect(dx, dy, dw, dh);
+  }
   } 
 }

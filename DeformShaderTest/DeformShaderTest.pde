@@ -10,7 +10,7 @@
 
 PImage tex;
 PShader deform;
-int tilesX = 20;
+int tilesX = 10;
 int tilesY = 10;
 
 private ArrayList<Deformation> deformations = new ArrayList<Deformation>();
