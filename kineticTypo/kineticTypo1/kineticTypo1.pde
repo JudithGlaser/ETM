@@ -1,21 +1,26 @@
-public final int tilesX = 4;
-public final int tilesY = 0;
+// animation based on code of Tim Rodenbröker https://timrodenbroeker.de/
+// code created by Markus Maerzhase https://github.com/maerzhase
+
+public final int tilesX = 1;
+public final int tilesY = 5;
 
 private PImage originalImage;
 private ArrayList<Tile> tiles = new ArrayList<Tile>();
 
 void setup() {
-  size(1000, 500);
-  originalImage = loadImage("../ASSETS/ETM#2.png");
-  originalImage.resize(1000, 500);
+  size(568, 800);
+  originalImage = loadImage("../ASSETS/ETM_portrait#1.png");
+  originalImage.resize(568, 800);
   for (int x= 0; x < tilesX ; x++) {
-    Tile tile = new Tile(originalImage, x, width/tilesX, height);
+    for (int y = 0; y < tilesY ; y++) {
+    Tile tile = new Tile(originalImage, x, y, width/tilesX, height/tilesY);
     tiles.add(tile);
+    }
   }
 }
 
 void draw() {
-  background(0);
+  background(255,0,0);
   noStroke();
   // Kurzform um über alle Elemente der Liste zu gehen
   for (Tile tile : tiles) {
@@ -25,7 +30,7 @@ void draw() {
     // we do that before we actually display the tile
     tile.update(mouseX, mouseY);
     // display really just has the task of drawing the tile based on the
-    // parameters we provide to the thile via the update function
+    // parameters we provide to the tile via the update function
     tile.display();
   }
 }
