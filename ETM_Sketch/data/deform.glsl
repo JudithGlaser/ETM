@@ -20,8 +20,8 @@ varying vec4 vertColor;
 void main(void) {
   vec2 v = vertTexCoord.st;
   vec2 st = vertTexCoord.st;
-  st.x *= 10;
-  st.y *= 10;
+  st.x *= 1;
+  st.y *= 3;
 	// st.x += step(0.5, mod(st.x,.000)) * 0.500;
   st = fract(st);
 
@@ -35,7 +35,7 @@ void main(void) {
   // y = step(0.5, st.y) * 4;
   // x *= mouse.x / 10000; 
   t *= 0.25;
-  float w = sin((t + (x * y)) * 0.1) * (0.25 * mouse.y) ;
+  float w = sin((t + (x * y) * mouse.x) * 0.1) * (0.25 * mouse.y) ;
 
 
   v.x += w;

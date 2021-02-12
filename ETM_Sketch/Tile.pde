@@ -47,9 +47,16 @@ class Tile {
   }
   
   void update() {
-    // this makes the frameCount available in our shader as:
-    // time
-    this.deform.set("time", float(frameCount));
+    if (this.pointer.x > this.posX && this.pointer.x < this.posX + this.sizeX/2) {
+      this.alpha = int(map(this.pointer.x, this.posX, this.posX + this.sizeX/2, 25, 100));
+      //o = 255;
+      //g = 0;
+    } 
+    if (this.pointer.x > this.posX + this.sizeX/2 && this.pointer.x < this.posX + this.sizeX) {
+      this.alpha = int(map(this.pointer.x, this.posX + this.sizeX/2, this.posX + this.sizeX, 100, 25));
+      //o = 0;
+      //g = 255;
+    } 
     float x = 100;
     float y = 1;
     if (this.pointerOverlaps()) {
@@ -60,7 +67,10 @@ class Tile {
     // here we can set two values that will be available in the shader as:
     // mouse.x and mouse.y
     this.deform.set("mouse", x, sin(this.alpha)+1);
-  }
+    // this makes the frameCount available in our shader as:
+    // time
+    this.deform.set("time", float(frameCount));
+}
   
   void display() {
     this.pg.beginDraw();
@@ -109,16 +119,6 @@ class Tile {
   }
   
   void old_drawEffect(){
-    if (this.pointer.x > this.posX && this.pointer.x < this.posX + this.sizeX/2) {
-      this.alpha = int(map(this.pointer.x, this.posX, this.posX + this.sizeX/2, 25, 100));
-      //o = 255;
-      //g = 0;
-    } 
-    if (this.pointer.x > this.posX + this.sizeX/2 && this.pointer.x < this.posX + this.sizeX) {
-      this.alpha = int(map(this.pointer.x, this.posX + this.sizeX/2, this.posX + this.sizeX, 100, 25));
-      //o = 0;
-      //g = 255;
-    } 
     if (this.pointerOverlaps()){
       ellipseMode(CENTER);
       noStroke();

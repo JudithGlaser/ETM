@@ -1,12 +1,12 @@
 private MQTTReceiver receiver;
 private Pointer pointer;
-public final int tilesX = 4;
-public final int tilesY = 4;
+public final int tilesX = 10;
+public final int tilesY = 10;
 private ArrayList<Tile> tiles = new ArrayList<Tile>();
 
 private boolean DEBUG = true;
 private boolean SHOW_POINTER = true;
-private boolean SHOW_OVERLAP_GRID = true;
+private boolean SHOW_OVERLAP_GRID = false;
 
 PImage tex;
 
