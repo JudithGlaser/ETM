@@ -35,7 +35,9 @@ void main(void) {
   // y = step(0.5, st.y) * 4;
   // x *= mouse.x / 10000; 
   t *= 0.25;
-  float w = sin((t + (x * y) * mouse.x) * 0.1) * (0.25 * mouse.y) ;
+  float w = sin((t + (x * y) * mouse.x) * 0.1) * (0.08 * mouse.y) ;
+  //float w = sin((t + (x * y) * mouse.x) * 0.1) * (0.25 * mouse.y) ;
+
 
 
   v.x += w;

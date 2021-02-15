@@ -16,7 +16,6 @@ class Tile {
   private int sizeY;
   
   float alpha;
-  //int o, g;
   
   Tile (PImage t, Pointer p, int i, int j, int x, int y, int w, int h) {
     this.pointer = p;
@@ -49,13 +48,11 @@ class Tile {
   void update() {
     if (this.pointer.x > this.posX && this.pointer.x < this.posX + this.sizeX/2) {
       this.alpha = int(map(this.pointer.x, this.posX, this.posX + this.sizeX/2, 25, 100));
-      //o = 255;
-      //g = 0;
+
     } 
     if (this.pointer.x > this.posX + this.sizeX/2 && this.pointer.x < this.posX + this.sizeX) {
       this.alpha = int(map(this.pointer.x, this.posX + this.sizeX/2, this.posX + this.sizeX, 100, 25));
-      //o = 0;
-      //g = 255;
+
     } 
     float x = 100;
     float y = 1;
