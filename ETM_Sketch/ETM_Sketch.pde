@@ -11,8 +11,9 @@ private boolean SHOW_OVERLAP_GRID = true;
 PImage tex;
 
 void setup() {
+  fullScreen(P2D);
   noCursor();
-  size(720, 1280, P2D);
+  // size(720, 1280, P2D);
   frameRate(30);
   textureWrap(REPEAT);
   receiver = new MQTTReceiver(this, DEBUG);  
