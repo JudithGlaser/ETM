@@ -6,7 +6,7 @@ class Avarage {
   public float max = 0;
   
   Avarage() {
-   this.storedValues = new float[85];
+   this.storedValues = new float[25];
   }
   
   void update(float value) {

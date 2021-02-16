@@ -46,6 +46,7 @@ class Tile {
   }
   
   void update() {
+    this.alpha = 25;
     if (this.pointer.x > this.posX && this.pointer.x < this.posX + this.sizeX/2) {
       this.alpha = int(map(this.pointer.x, this.posX, this.posX + this.sizeX/2, 25, 100));
 
@@ -63,7 +64,8 @@ class Tile {
     }
     // here we can set two values that will be available in the shader as:
     // mouse.x and mouse.y
-    this.deform.set("mouse", x, sin(this.alpha)+1);
+    println(this.alpha);
+    this.deform.set("mouse", x, map(this.alpha, 25, 100, 1, 2));
     // this makes the frameCount available in our shader as:
     // time
     this.deform.set("time", float(frameCount));
