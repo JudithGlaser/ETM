@@ -64,7 +64,6 @@ class Tile {
     }
     // here we can set two values that will be available in the shader as:
     // mouse.x and mouse.y
-    println(this.alpha);
     this.deform.set("mouse", x, map(this.alpha, 25, 100, 1, 2));
     // this makes the frameCount available in our shader as:
     // time

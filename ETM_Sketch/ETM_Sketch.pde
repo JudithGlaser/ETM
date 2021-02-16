@@ -8,12 +8,17 @@ private boolean DEBUG = false;
 private boolean SHOW_POINTER = false;
 private boolean SHOW_OVERLAP_GRID = false;
 
+int SLEEP_TIMER = 1000 * 60;
+int timerCount = 0;
+
+PVector lastPointerPosition = new PVector(0, 0);
+
 PImage tex;
 
 void setup() {
-  fullScreen(P2D);
+  //fullScreen(P2D);
   noCursor();
-  // size(720, 1280, P2D);
+  size(360, 640, P2D);
   frameRate(30);
   textureWrap(REPEAT);
   receiver = new MQTTReceiver(this, DEBUG);  
@@ -34,16 +39,25 @@ void draw() {
   background(0);
   PVector p = receiver.averageMapped();
   pointer.update(p.x, p.y);
-  for (Tile tile : tiles) {
-    tile.update();
-    tile.display();
+  
+  if(lastPointerPosition.dist(p) > 15) {
+    timerCount = millis(); 
   }
-  if (SHOW_OVERLAP_GRID) {
-    for (Tile tile : tiles) {
-      tile.old_display();
-    }
+  println(lastPointerPosition.dist(p));
+    
+  if(millis() < timerCount + SLEEP_TIMER) {
+      for (Tile tile : tiles) {
+        tile.update();
+        tile.display();
+      }
+      if (SHOW_OVERLAP_GRID) {
+        for (Tile tile : tiles) {
+          tile.old_display();
+        }
+      }
+      if(SHOW_POINTER) {
+        pointer.display();
+      }
   }
-  if(SHOW_POINTER) {
-    pointer.display();
-  }
+  lastPointerPosition = p;
 }
