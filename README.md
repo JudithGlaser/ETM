@@ -1,4 +1,13 @@
-# Embracing the mess
+# Embracing The Mess
+›Embracing the mess‹ is an interactive installation and initially emerged as a result of the examination of my own research process. Beyond the discourse of theory and practice, of (knowledge) models and methodological restraints, of epistemic sovereignty and hegemony, the question is – what does research mean for the research object and for the researcher?
+
+Karen Barad invites us to understand research as a practice of cutting. Cuts make some aspects of a research object visible, others not. On the premise that observer and phenomenon are intertwined, each cut separates and creates different forms of visibility and invisibility. Where the traces of the research process undertaken obscure parts of the object, the (in)sight of the researcher will also always be partial. How we cut, how we make visible, affects how we understand what we think we are researching.
+
+It is against this background that ›Embracing the mess‹ references and misunderstands the contrasting optical metaphors of reflectivity and diffraction. As a ›diffraction apparatus‹ it invites those searching to play with interference and difference. The exploration of an always-incomplete object. A balancing act between revealing and concealing, sharpness and fuzziness. Inquiring how researchers and their research practices are involved in the becoming of the object. As a ›mirror‹, the installation does not throw the research object back on itself, but the researcher. Research as a process that changes not only the object but also the researcher. Through this reverse reference, the installation explores the sensual-emotional dimension of research and finally asks about its significance for epistemological processes. 
+
+![Alt Text](https://github.com/JudithGlaser/ETM/blob/main/ETM_Sketch/demo/exhibit.png)
+![Alt Text](https://github.com/JudithGlaser/ETM/blob/main/ETM_Sketch/demo/demo1.gif)
+
 
 ## ETM experiments
 The **Typo Tests** folder collects a number of typography focused interactive Processing sketches. As they arose from a exploration phase these are developed to different degrees. Each test contains a gif to give a preview of the effect. 
