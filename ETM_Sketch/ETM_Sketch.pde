@@ -4,7 +4,7 @@ public final int tilesX = 8;
 public final int tilesY = 15;
 private ArrayList<Tile> tiles = new ArrayList<Tile>();
 
-private boolean DEBUG = false;
+private boolean DEBUG = true;
 private boolean SHOW_POINTER = false;
 private boolean SHOW_OVERLAP_GRID = false;
 
