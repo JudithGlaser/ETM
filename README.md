@@ -38,9 +38,22 @@ The **step-res.py** script basically reads the poti values and submits it via [M
 - direct to exported sketch `cd ~/repos/ETM/ETM_Sketch`
 - run sketch `bash application.linux-armv6hf/ETM_Sketch`
 
+## Hardware
+The hardware set up to read potentiometers with a Raspberry Pi are taken from this [tutorial](https://www.circuitbasics.com/using-potentiometers-with-raspberry-pi/). The components are:
+
+- Raspberry Pi 4, 4GB, 32 GB Micro SD
+- 10K potentiometer
+- 2x 1K Ohm resistors
+- 220 nF capacitor
+- Jumper wires
+- Bread board
+
+![Alt Text](https://github.com/JudithGlaser/ETM/blob/main/ETM_Sketch/demo/hardware.jpg)
+
+
 ## References
 
-- [USING POTENTIOMETERS WITH THE RASPBERRY PI](https://www.circuitbasics.com/using-potentiometers-with-raspberry-pi/)
+- [Using potentiometers with Raspberry Pi](https://www.circuitbasics.com/using-potentiometers-with-raspberry-pi/)
 - [MQTT > Processing bridge for I2C sensors](https://github.com/msurguy/processing-mqtt-sensor-demo)
 - [KineticTypographyny by Tim Rodenbroeker](https://timrodenbroeker.de/processing-tutorial-kinetic-typography-1/)
 - [The book of shader](https://thebookofshaders.com/09/)
