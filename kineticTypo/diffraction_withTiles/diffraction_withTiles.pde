@@ -1,16 +1,16 @@
 // animation based on code of Tim Rodenbröker https://timrodenbroeker.de/
 // code created by Markus Maerzhase https://github.com/maerzhase
 
-public final int tilesX = 1;
-public final int tilesY = 5;
+public final int tilesX = 3;
+public final int tilesY = 1;
 
 private PImage originalImage;
 private ArrayList<Tile> tiles = new ArrayList<Tile>();
 
 void setup() {
-  size(568, 800);
-  originalImage = loadImage("../ASSETS/ETM_portrait#1.png");
-  originalImage.resize(568, 800);
+  size(600, 300);
+  originalImage = loadImage("../ASSETS/ETM#2.png");
+  originalImage.resize(600, 300);
   for (int x= 0; x < tilesX ; x++) {
     for (int y = 0; y < tilesY ; y++) {
     Tile tile = new Tile(originalImage, x, y, width/tilesX, height/tilesY);

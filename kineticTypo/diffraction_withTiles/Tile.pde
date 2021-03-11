@@ -93,15 +93,15 @@ class Tile {
       for (int fx = 0; fx < Tile.fraqX; fx++) {
         // WAVE
         //int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * 100);
-        //int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 5, height, 0, 200)); // trigonomic function
+        int wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseY, 5, height, 0, 200)); // trigonomic function
       
         if ( this.isHovered()) { 
-          //wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseX, this.posX, this.posX + this.tileH, 20, 100)); 
+        wave = int(sin((frameCount + ( fx*fy )) * 0.05) * map(mouseX, this.posX, this.posX + this.tileH, 20, 100)); 
         }
       
         // SOURCE
-        int sx = fx * this.fragW + this.posX;  //copy the "right" dimensions of tile
-        //int sx = fx * this.fragW + this.posX + wave;  //copy the "right" dimensions of tile
+        //int sx = fx * this.fragW + this.posX;  //copy the "right" dimensions of tile
+        int sx = fx * this.fragW + this.posX + wave;  //copy the "right" dimensions of tile
         int sy = fy * this.fragH + this.posY;
         int sw = this.fragW;
         int sh = this.fragH;
